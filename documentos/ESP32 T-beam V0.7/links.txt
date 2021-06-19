@@ -1,0 +1,4 @@
+fabricante             -> http://www.lilygo.cn/prod_view.aspx?TypeId=50033&Id=1237
+
+informações adicionais -> https://github.com/lyusupov/SoftRF/wiki/Prime-Edition-MkII
+		       -> https://github.com/LilyGO/SoftRF 

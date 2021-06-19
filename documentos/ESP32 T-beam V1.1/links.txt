@@ -1,0 +1,6 @@
+fabricante             -> http://www.lilygo.cn/claprod_view.aspx?TypeId=62&Id=1281
+
+informações adicionais -> https://github.com/lyusupov/SoftRF/wiki/Prime-Edition-MkII
+		       -> https://github.com/LilyGO/SoftRF
+   		       -> https://github.com/Xinyuan-LilyGO/LilyGO-T-Beam
+		       -> https://github.com/Xinyuan-LilyGO/LilyGo-LoRa-Series/blob/master/schematic/LilyGo_TBeam_V1.1.pdf
