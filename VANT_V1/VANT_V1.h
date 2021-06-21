@@ -27,8 +27,6 @@ int valor_LY = 2048;
 
 
 
- 
-
 //------------------Motores------------------
 int potenciaMaxima = 247;
 int potenciaMinima = 70;
@@ -57,8 +55,55 @@ float gz3 = 0;
 float gx4 = 0;
 float gy4 = 0;
 float gz4 = 0;
+float gx4tst = 0;
+float gy4tst = 0;
+float gz4tst = 0;
 float gz_ini = 0; 
 float radToDegr = 57.295795;
+int16_t Tmp = 0;  
+
+//------------------GY-91------------------
+
+#define MPU9250_ADDRESS  0x68  // Change to 0x69 if AD0 is in high state
+#define PWR_MGMT_1       0x6B
+#define PWR_MGMT_2       0x6C
+#define INT_PIN_CFG      0x37
+#define AK8963_ADDRESS   0x0C  // MPU9250 must bypass to access the AK8963 in INT_PIN_CFG
+#define AK8963_CNTL      0x0A  // Power down (0000), Continuous measurement mode 1 (0010), CMM2 (0110), Fuse ROM (1111) on bits 3:0
+#define AK8963_ASAX      0x10  // Fuse ROM x-axis sensitivity adjustment value
+#define ACCEL_XOUT_H     0x3B  // 1º dado
+#define GYRO_CONFIG      0x1B
+#define ACCEL_CONFIG     0x1C
+float MagAdjustment[3] = {0, 0, 0};
+float CALIB = 16071.82;
+float GRAVI = 9.81;
+float AJUSTE = 1.69;
+float G_GAIN = 0.0164;//0.00875;
+float SENSE_GYRO_2000 = 0.0164;
+float SENSE_GYRO_1000 = 0.0328;
+float SENSE_GYRO_500 = 0.0655;
+float SENSE_GYRO_250 = 0.131;
+
+typedef enum{
+  RANGE_16G          = 0b11,
+  RANGE_8G           = 0b10,
+  RANGE_4G           = 0b01,
+  RANGE_2G           = 0b00
+} accel_range;
+typedef enum{
+  RANGE_GYRO_2000    = 0b11,
+  RANGE_GYRO_1000    = 0b10,
+  RANGE_GYRO_500     = 0b01,
+  RANGE_GYRO_250     = 0b00
+} gyro_range;
+typedef enum{
+  SCALE_14_BITS      = 0,
+  SCALE_16_BITS      = 1
+} mag_scale;
+typedef enum{
+  MAG_8_Hz           = 0,
+  MAG_100_Hz         = 1
+} mag_speed;
 
 typedef struct {
   uint16_t RX = 0;
@@ -74,6 +119,7 @@ typedef struct {
   uint16_t potenciaMaxima = 247;
   uint16_t potenciaMinima = 70;
   int16_t grauInicialEixoZ = 0;
+  bool modoAutonomo = false;
 } Modo_de_operacao;
 
 
@@ -84,9 +130,14 @@ typedef struct {
   int32_t sp_gz = 0;           //Setpoint grau do angulo eixo z 
 } SetPoints;
 
-enum ESTADOS{
-  AGUARDANDO_DECOLAGEM,
-  SETPOINTS,
-  
-  
-}
+typedef enum {
+  AGUARDAR_COMANDOS,
+  CONTROLE_REMOTO,
+  PILOTO_AUTOMATICO
+} ME_ordem_de_execucao;
+
+/*
+typedef enum {
+  AGUARDAR_COMANDOS,
+  VOAR
+} ME_ordem_de_execucao;*/

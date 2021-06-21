@@ -20,7 +20,7 @@ String packet ;
 #define ADC_RY 35
 #define ADC_LX 32
 #define ADC_LY 33
-int valor_RX = 2048;
-int valor_RY = 2048;
-int valor_LX = 2048;
-int valor_LY = 2048;
+uint16_t valor_RX = 2048;
+uint16_t valor_RY = 2048;
+uint16_t valor_LX = 2048;
+uint16_t valor_LY = 2048;

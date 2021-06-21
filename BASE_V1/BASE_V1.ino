@@ -38,10 +38,10 @@ void enviaComandosVant(){
   Serial.println(valor_RX_f);
 
   LoRa.beginPacket();  
-  LoRa.print(valor_RX_f);
-  LoRa.print(valor_RY_f); 
-  LoRa.print(valor_LX_f);
-  LoRa.print(valor_LY_f);
+  LoRa.print(valor_RX);
+ // LoRa.print(valor_RY_f); 
+ // LoRa.print(valor_LX_f);
+ // LoRa.print(valor_LY_f);
   LoRa.endPacket();
 }
 
